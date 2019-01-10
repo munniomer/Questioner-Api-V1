@@ -1,22 +1,20 @@
-users = []
+users = []  # list for storing our users
 
 
-class UserModels:
-    """User models class"""
+class UserModel(object):
+    """Class user models."""
 
     def __init__(self):
-        """Initialize the user model class"""
-        pass
+        self.db = users
 
-    def add_user(self, username, email, password, confirm_password):
-        """Adding new users"""
-        user_data = {
-            'user_id': len(users) + 1,
-            'username': username,
-            'email': email,
-            'password': password,
-            'confirm_password': confirm_password
+    def add_user(self, username, email, password):
+        """ Method for saving user to the dictionary """
+        payload = {
+            "userId": len(self.db) + 1,  
+            "username": username,
+            "email": email,
+            "password": password
+
         }
-
-        user_details = users.append(user_data)
-        return user_details
+        self.db.append(payload)
+        return self.db
