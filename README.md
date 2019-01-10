@@ -3,7 +3,7 @@ Crowd-source questions for a meetup. Questioner helps the meetup organizer prior
 
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)]
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/munniomer/Questioner-Api-V1.svg?branch=ft-user-registration-v1-163083345)](https://travis-ci.com/munniomer/Questioner-Api-V1)
 [![Coverage Status](https://coveralls.io/repos/github/munniomer/Questioner-Api-V1/badge.svg?branch=ft-user-registration-v1-163083345)](https://coveralls.io/github/munniomer/Questioner-Api-V1?branch=ft-user-registration-v1-163083345)
 
