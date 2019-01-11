@@ -75,6 +75,49 @@ class BaseTest(unittest.TestCase):
 
         }
 
+
+        self.new_user9 = {
+            
+            "email": "shidaneail.com",
+            "password": "m123"
+            
+           
+        }
+
+        self.new_user10 = {
+            "email": "shidane1@gmail.com"
+            
+           
+        }
+
+        self.new_user11 = {
+            "username": "Mom",
+            "email": "Mom@gmail.com",
+            "password": "m123",
+            "role": "user"
+
+        }
+
+
+        self.new_user12 = {
+            "username": "Mum",
+            "email": "Mumm@gmail.com",
+            "password": "m123",
+            "role": "user"
+
+        }
+
+
+        self.new_user13 = {
+            
+            "email": "Mumm@gmail.com",
+            "password": "m123"
+            
+
+        }
+      
+
+
     def tearDown(self):
         """Destroys the test client when done"""
         self.app.testing = False
