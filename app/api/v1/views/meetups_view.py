@@ -32,3 +32,11 @@ class MeetupResource(Resource):
                 "message": "Meetup successfully created", 
                 "meetup data": response}, 201
 
+    def get(self):
+        """Method for fetching all Meetup records"""
+        meetups = db.get_all_meetups()
+        # check if the dh is empty
+        if len(meetups) == 0:
+            return {'message': 'There are no meetups created'}, 404
+        return {'All meetups orders': meetups}, 200
+
