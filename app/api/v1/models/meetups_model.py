@@ -24,3 +24,14 @@ class MeetupModel(object):
     def get_all_meetups(self):
         """ Method for getting all Meetup records """
         return self.db
+    
+    def get_specific_meetup(self, meetup_Id):
+        """ Method for getting a specific meetup details """
+        meetup = [meetup for meetup in meetups if meetup['meetup_Id'] == meetup_Id]
+        return meetup
+
+
+        #  def get_specific_parcel(self, parcel_Id):
+        # """ Method for getting a specific parcel orders """
+        # parcel = [parcel for parcel in parcels if parcel['parcel_Id'] == parcel_Id]
+        # return parcel
