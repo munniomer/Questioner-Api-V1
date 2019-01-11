@@ -34,7 +34,7 @@ class TestUSer(BaseTest):
 
         respon = self.client.post("/api/v1/user/register", json=self.new_user1, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('PLease check if username is empty or less 3 letters or contains numbers',
+        self.assertIn('PLease check if username or role is empty or less 3 letters or contains numbers',
                       str(respon.data))
 
     def test_valid_email(self):
