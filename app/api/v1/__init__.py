@@ -13,6 +13,6 @@ app.add_resource(SignupResource, '/user/register')
 app.add_resource(LoginResource, '/user/login')
 
 #Meetups
-app.add_resource(MeetupResource, '/meetups')
+app.add_resource(MeetupResource, '/meetups', '/meetups/upcoming')
 
 
