@@ -20,3 +20,7 @@ class MeetupModel(object):
         }
         self.db.append(payload)
         return self.db
+
+    def get_all_meetups(self):
+        """ Method for getting all Meetup records """
+        return self.db
