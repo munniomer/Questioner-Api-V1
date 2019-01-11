@@ -115,7 +115,17 @@ class BaseTest(unittest.TestCase):
             
 
         }
-      
+        self.meetup = {
+        "venue": "iHub Kenya",
+        "title": "Python Meetup",
+        "happening_on": "1/25/2019"
+    }
+
+        self.meetup1 = {
+        "venue": "iHub Kenya",
+        "happening_on": "1/25/2019"
+    }
+        
 
 
     def tearDown(self):
