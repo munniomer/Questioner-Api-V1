@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint
 from flask_restful import Api, Resource 
-from app.api.v1.views.users_view import SignupResource
+from app.api.v1.views.users_view import SignupResource,LoginResource
 
 
 v1 = Blueprint('apiv1', __name__, url_prefix='/api/v1')
@@ -10,4 +10,6 @@ app = Api(v1)
 
 # Users
 app.add_resource(SignupResource, '/user/register')
+app.add_resource(LoginResource, '/user/login')
+
 

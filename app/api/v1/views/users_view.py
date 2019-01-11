@@ -3,7 +3,7 @@
 from app.api.v1.models.users_model import UserModel  
 from flask import Flask, request, jsonify
 from flask_restful import Resource
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash
 from app.validators.validators import Validators
 
 db = UserModel()
@@ -66,5 +66,35 @@ class SignupResource(Resource):
                 "message": "User successfully created", 
                 "user data": response}, 201
 
+class LoginResource(Resource):
+    """Resource for user login """
 
+    def post(self):
+        """method for login users"""
+        request_data = request.get_json()
+        if not request_data:
+            return {"message": "Please provide a correct json data"}, 400
+        if not all(key in request_data for key in ["email", "password"]):
+            return {"message": "Please provide your email and password"}, 400
+        print(request_data)
+        email = request_data["email"]
+        password = request_data["password"]
+
+        # Checks if email is valid
+        if not validate.valid_email(email):
+            return {'message': "Please enter a valid email "}, 400
+
+        # checks if email exists
+        if not validate.check_email(email):
+            return {'message': 'That email does not exist. Please register first'}, 404
+        result = validate.check_email(email)
     
+        for userdata in result:
+            userpass = userdata["password"]
+        
+        if check_password_hash(userpass, password):
+              return {"status": 200,
+                     "message": "Successfully loged in"},200
+        return {"message": "Password is incorrect"}, 400
+            
+      
