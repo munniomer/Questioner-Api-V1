@@ -40,3 +40,14 @@ class MeetupResource(Resource):
             return {'message': 'There are no meetups created'}, 404
         return {'All meetups orders': meetups}, 200
 
+    
+class MeetupSpecific(Resource):
+    """ class for specific Meetup """
+
+    def get(self, meetup_Id):
+        """getting a meetups record by the ID"""
+        meetup = db.get_specific_meetup(meetup_Id)
+        if meetup:
+            return {'meetups details': meetup[0]}, 200
+        return {'message': "meetups details not found"}, 404
+
