@@ -28,3 +28,12 @@ class TestMeetup(BaseTest):
         self.assertEqual(respon.status_code, 201)
         self.assertIn('Meetup successfully created',
                       str(respon.data))
+
+    def test_to_get_all_parcels(self):
+        """Test when meetups are there to fetch"""
+        respon = self.client.get('/api/v1/meetups')
+        self.assertEqual(respon.status_code, 200)
+        self.assertIn('All meetups orders',
+                      str(respon.data))
+
+   
