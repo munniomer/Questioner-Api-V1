@@ -46,22 +46,22 @@ class TestUSer(BaseTest):
                       str(respon.data))
 
     def test_if_email_exist(self):
-        """Tests if email is valid"""
+        """Tests if email is exists"""
         self.client.post(
             "/api/v1/user/register", json=self.new_user4, content_type='application/json')
         respon = self.client.post(
             "/api/v1/user/register", json=self.new_user3, content_type='application/json')
-        self.assertEqual(respon.status_code, 400)
+        self.assertEqual(respon.status_code, 403)
         self.assertIn('That email exists. use a unique email',
                       str(respon.data))
 
     def test_if_username_exist(self):
-        """Tests if email is valid"""
+        """Tests if email is exists"""
         self.client.post(
             "/api/v1/user/register", json=self.new_user3, content_type='application/json')
         respon = self.client.post(
             "/api/v1/user/register", json=self.new_user4, content_type='application/json')
-        self.assertEqual(respon.status_code, 400)
+        self.assertEqual(respon.status_code, 403)
         self.assertIn('That username exists. use a unique username',
                       str(respon.data))
 
@@ -70,7 +70,7 @@ class TestUSer(BaseTest):
         respon = self.client.post(
             "/api/v1/user/register", json=self.new_user5, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('Please check if your password is empty or less than 3',
+        self.assertIn('Please check if your password is empty or less than 6',
                       str(respon.data))
 
     def test_if_password_match(self):
@@ -117,8 +117,3 @@ class TestUSer(BaseTest):
         self.assertEqual(respon.status_code, 404)
         self.assertIn('"That email does not exist. Please register first"',
                       str(respon.data))
-
-
-
-    
-    
