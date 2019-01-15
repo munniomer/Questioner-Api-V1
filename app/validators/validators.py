@@ -32,5 +32,5 @@ class Validators():
 
     def valid_password(self, password):
         """ valid password """
-        regex = "^[a-zA-Z0-9@_+-.]{3,}$"
+        regex = "^[a-zA-Z0-9@_+-.]{6,}$"
         return re.match(regex, password)
