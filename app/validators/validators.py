@@ -1,9 +1,10 @@
 """Validators Module"""
 import re
 from app.api.v1.models.users_model import users
-from app.api.v1.models.meetups_model import meetups
+from app.api.v1.models.meetups_model import MeetupModel,meetups
 from werkzeug.exceptions import BadRequest
 
+db = MeetupModel()
 
 class Validators():
     """Validators Class"""
@@ -37,11 +38,6 @@ class Validators():
         regex = "^[a-zA-Z0-9@_+-.]{6,}$"
         return re.match(regex, password)
     
-    def check_meetup_title(self,title):
-        """Method for checking if meetup exists"""
-        meetup = [meetup for meetup in meetups if meetup['title'] == title]
-        return meetup
-    
     def check_data(self,data):
         """Method for checking if data is provided"""
         if not data:
@@ -56,6 +52,20 @@ class Validators():
         """Method for checking if all the login fields are provided"""
         if not all(key in data for key in ["email", "password"]):
              raise BadRequest ("Please provide your email and password")
+    
+    def validate_meetup_data(self,data):
+        """Method for validating meetup data"""
+        if not all(key in data for key in ["venue", "title", "happening_on"]):
+            raise BadRequest ("Some fields are missing")
+        elif data["venue"] == "" or data["title"] == "" or data["happening_on"] == "":
+            raise BadRequest("Please fill all the fields")
+        elif data["venue"].isdigit() or data["title"].isdigit():
+            raise BadRequest("Title and Venue should not be provided in numbers")
+
+
+     
+
+
 
 
 
