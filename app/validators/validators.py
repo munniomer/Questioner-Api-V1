@@ -1,6 +1,8 @@
 """Validators Module"""
 import re
 from app.api.v1.models.users_model import users
+from app.api.v1.models.meetups_model import meetups
+from werkzeug.exceptions import BadRequest
 
 
 class Validators():
@@ -34,3 +36,26 @@ class Validators():
         """ valid password """
         regex = "^[a-zA-Z0-9@_+-.]{6,}$"
         return re.match(regex, password)
+    
+    def check_meetup_title(self,title):
+        """Method for checking if meetup exists"""
+        meetup = [meetup for meetup in meetups if meetup['title'] == title]
+        return meetup
+    
+    def check_data(self,data):
+        """Method for checking if data is provided"""
+        if not data:
+            raise BadRequest("Please provide a json data")
+
+    def check_signup_data_fileds(self, data):
+        """Method for checking if all the signup fields are provided"""
+        if not all(key in data for key in ["username", "email", "password", "confirm_password", "role"]):
+            raise BadRequest("Some fields are missing")
+    
+    def check_login_data_fields(self,data):
+        """Method for checking if all the login fields are provided"""
+        if not all(key in data for key in ["email", "password"]):
+             raise BadRequest ("Please provide your email and password")
+
+
+

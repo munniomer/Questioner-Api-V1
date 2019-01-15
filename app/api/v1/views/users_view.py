@@ -17,10 +17,8 @@ class SignupResource(Resource):
     def post(self):
         """Method for posting user data"""
         data = request.get_json()
-        if not data:
-            raise BadRequest("Please provide a json data")
-        if not all(key in data for key in ["username", "email", "password", "confirm_password", "role"]):
-            raise BadRequest("Some fields are missing")
+        validate.check_data(data)
+        validate.check_signup_data_fileds(data)
         print(data)
         username = data["username"]
         email = data["email"]
@@ -70,10 +68,8 @@ class LoginResource(Resource):
     def post(self):
         """method for login users"""
         request_data = request.get_json()
-        if not request_data:
-            return {"message": "Please provide a correct json data"}, 400
-        if not all(key in request_data for key in ["email", "password"]):
-            return {"message": "Please provide your email and password"}, 400
+        validate.check_data(request_data)
+        validate.check_login_data_fields(request_data)
         print(request_data)
         email = request_data["email"]
         password = request_data["password"]
