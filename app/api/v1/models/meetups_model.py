@@ -30,8 +30,3 @@ class MeetupModel(object):
         meetup = [meetup for meetup in meetups if meetup['meetup_Id'] == meetup_Id]
         return meetup
 
-
-        #  def get_specific_parcel(self, parcel_Id):
-        # """ Method for getting a specific parcel orders """
-        # parcel = [parcel for parcel in parcels if parcel['parcel_Id'] == parcel_Id]
-        # return parcel
