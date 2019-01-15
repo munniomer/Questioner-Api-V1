@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource
 from werkzeug.security import generate_password_hash,check_password_hash
 from app.validators.validators import Validators
+from werkzeug.exceptions import BadRequest,Forbidden,NotFound
 
 db = UserModel()
 validate = Validators()
@@ -16,9 +17,9 @@ class SignupResource(Resource):
         """Method for posting user data"""
         data = request.get_json()
         if not data:
-            return {"message": "Please provide a json data"}, 400
+            raise BadRequest ("Please provide a json data")
         if not all(key in data for key in ["username", "email", "password", "confirm_password","role"]):
-            return {"message": "Some fields are missing"}, 400
+            raise BadRequest ("Some fields are missing")
         print(data)
         username = data["username"]
         email = data["email"]
@@ -28,29 +29,29 @@ class SignupResource(Resource):
         
         #Checks if username or role is valid
         if not validate.valid_name(username) or not validate.valid_name(role):
-            return {'message': "PLease check if username or role is empty or less 3 letters or contains numbers"}, 400
+            raise BadRequest ("PLease check if username or role is empty or less 3 letters or contains numbers")
         
         # checks if username exists
-        check_email = validate.check_username(username)
-        if check_email:
-            return {'message': 'That username exists. use a unique username'}, 400
+        check_username = validate.check_username(username)
+        if check_username:
+            raise Forbidden('That username exists. use a unique username')
 
-         # Checks if email is valid
+        # Checks if email is valid
         if not validate.valid_email(email):
-            return {'message': "Please enter a valid email "}, 400
+            raise BadRequest ("Please enter a valid email ")
 
         # checks if email exists
         check_email = validate.check_email(email)
         if check_email:
-            return {'message': 'That email exists. use a unique email'}, 400
+            raise Forbidden ("That email exists. use a unique email")
 
         # Checks if passwords are empty or less than 3
         if not validate.valid_password(password):
-            return {'message': "Please check if your password is empty or less than 3"}, 400
+            raise BadRequest ("Please check if your password is empty or less than 6")
 
         # checks if confirm password is equal to password
         if confirm_password != password:
-            return {"message": "confirm password does not match password"}, 400
+            raise BadRequest ("confirm password does not match password")
 
         hashpassword = generate_password_hash(password)
 
@@ -82,11 +83,11 @@ class LoginResource(Resource):
 
         # Checks if email is valid
         if not validate.valid_email(email):
-            return {'message': "Please enter a valid email "}, 400
+            raise BadRequest  ("Please enter a valid email ")
 
         # checks if email exists
         if not validate.check_email(email):
-            return {'message': 'That email does not exist. Please register first'}, 404
+            raise NotFound ("That email does not exist. Please register first")
         result = validate.check_email(email)
     
         for userdata in result:
@@ -95,6 +96,6 @@ class LoginResource(Resource):
         if check_password_hash(userpass, password):
               return {"status": 200,
                      "message": "Successfully loged in"},200
-        return {"message": "Password is incorrect"}, 400
+        raise BadRequest ("Password is incorrect")
             
       
