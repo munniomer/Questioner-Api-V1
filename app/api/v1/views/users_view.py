@@ -3,7 +3,7 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.exceptions import BadRequest, Forbidden, NotFound
+from werkzeug.exceptions import BadRequest, NotFound
 from app.api.v1.models.users_model import UserModel
 from app.validators.validators import Validators
 
@@ -32,14 +32,14 @@ class SignupResource(Resource):
 
         check_username = validate.check_username(username)
         if check_username:
-            raise Forbidden('That username exists. use a unique username')
+            raise BadRequest('That username exists. use a unique username')
 
         if not validate.valid_email(email):
             raise BadRequest("Please enter a valid email ")
 
         check_email = validate.check_email(email)
         if check_email:
-            raise Forbidden("That email exists. use a unique email")
+            raise BadRequest("That email exists. use a unique email")
 
         if not validate.valid_password(password):
             raise BadRequest(
