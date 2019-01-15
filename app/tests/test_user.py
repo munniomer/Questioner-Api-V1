@@ -46,7 +46,7 @@ class TestUSer(BaseTest):
                       str(respon.data))
 
     def test_if_email_exist(self):
-        """Tests if email is valid"""
+        """Tests if email is exists"""
         self.client.post(
             "/api/v1/user/register", json=self.new_user4, content_type='application/json')
         respon = self.client.post(
@@ -56,7 +56,7 @@ class TestUSer(BaseTest):
                       str(respon.data))
 
     def test_if_username_exist(self):
-        """Tests if email is valid"""
+        """Tests if email is exists"""
         self.client.post(
             "/api/v1/user/register", json=self.new_user3, content_type='application/json')
         respon = self.client.post(
@@ -70,7 +70,7 @@ class TestUSer(BaseTest):
         respon = self.client.post(
             "/api/v1/user/register", json=self.new_user5, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('Please check if your password is empty or less than 3',
+        self.assertIn('Please check if your password is empty or less than 6',
                       str(respon.data))
 
     def test_if_password_match(self):
@@ -86,7 +86,7 @@ class TestUSer(BaseTest):
         respon= self.client.post(
             "/api/v1/user/login")
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('Please provide a correct json data',
+        self.assertIn('Please provide a json data',
                       str(respon.data))
     
 
@@ -97,6 +97,18 @@ class TestUSer(BaseTest):
         self.assertEqual(respon.status_code, 400)
         self.assertIn('Please provide your email and password',
                       str(respon.data))
+    
+    def test_user_login(self):
+        "tests if user can login"
+        self.client.post(
+            "/api/v1/user/register", json=self.new_user14, content_type='application/json')
+        respon=self.client.post(
+            "api/v1/user/login", json=self.new_user15, content_type='application/json')
+
+        self.assertEqual(respon.status_code, 200)
+        self.assertIn('Successfully loged in',
+                      str(respon.data))
+
     
     def test_if_valid_is_email(self):
         """Tests if email is valid in user login"""
@@ -118,7 +130,17 @@ class TestUSer(BaseTest):
         self.assertIn('"That email does not exist. Please register first"',
                       str(respon.data))
 
-
+    def test_password_incorrect(self):
+        "tests if password is incorrect in user login"
+        self.client.post(
+            "/api/v1/user/register", json=self.new_user16, content_type='application/json')
+        respon=self.client.post(
+            "api/v1/user/login", json=self.new_user17, content_type='application/json')
+        self.assertEqual(respon.status_code, 400)
+        self.assertIn('Password is incorrect',
+                      str(respon.data))
 
     
-    
+  
+
+
