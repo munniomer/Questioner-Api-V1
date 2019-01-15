@@ -115,6 +115,33 @@ class BaseTest(unittest.TestCase):
             
 
         }
+
+        self.new_user14 = {
+            "username": "siman",
+            "email": "siman@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+        self.new_user15 = {
+            "email": "siman@gmail.com",
+            "password": "m12m12"
+        }
+
+        self.new_user16 = {
+            "username": "susan",
+            "email": "susan@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+        self.new_user17 = {
+            "email": "susan@gmail.com",
+            "password": "m78m78"
+        }
+
         self.meetup = {
         "venue": "iHub Kenya",
         "title": "Python Meetup",
@@ -125,6 +152,20 @@ class BaseTest(unittest.TestCase):
         "venue": "iHub Kenya",
         "happening_on": "1/25/2019"
     }
+    
+        self.meetup2 = {
+        "venue": "",
+        "title": "Python Meetup",
+        "happening_on": "1/25/2019"
+    }
+
+
+        self.meetup3 = {
+        "venue": "7888",
+        "title": "Python Meetup",
+        "happening_on": "1/25/2019"
+    }
+
         
 
 
