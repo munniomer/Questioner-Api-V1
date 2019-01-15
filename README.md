@@ -6,6 +6,7 @@ Crowd-source questions for a meetup. Questioner helps the meetup organizer prior
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/munniomer/Questioner-Api-V1.svg?branch=ft-user-registration-v1-163083345)](https://travis-ci.com/munniomer/Questioner-Api-V1)
 [![Coverage Status](https://coveralls.io/repos/github/munniomer/Questioner-Api-V1/badge.svg?branch=ft-user-registration-v1-163083345)](https://coveralls.io/github/munniomer/Questioner-Api-V1?branch=ft-user-registration-v1-163083345)
+<a href="https://codeclimate.com/github/munniomer/Questioner-Api-V1/maintainability"><img src="https://api.codeclimate.com/v1/badges/b50955cabef7296a3b5b/maintainability" /></a>
 
 ## The required API Endpoints that enable one:
 1. Create a meetup record.
