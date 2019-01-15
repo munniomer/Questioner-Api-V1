@@ -21,15 +21,6 @@ def create_app(config_name):
     def handle_not_found(error):
         """ handles 404 eroors """
         return 'Not Found!', 404
-    
-    @app.errorhandler(403)
-    def handle_forbidden(error):
-        """Handles 403 errors"""
-        return 'Forbidden', 403
-    
-    @app.errorhandler(401)
-    def handle_unauthorized(error):
-        """Handles 401 errors"""
-        return 'Unauthorized', 403
+
 
     return app
