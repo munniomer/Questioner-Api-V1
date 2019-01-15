@@ -3,9 +3,11 @@
 from app.api.v1.models.meetups_model import MeetupModel
 from flask import Flask, request, jsonify
 from flask_restful import Resource
-
+from werkzeug.exceptions import BadRequest,NotFound,Forbidden
+from app.validators.validators import Validators
 
 db = MeetupModel()
+validate = Validators()
 
 class MeetupResource(Resource):
     """Resource for Creating Meetups."""
@@ -13,10 +15,8 @@ class MeetupResource(Resource):
     def post(self):
         """Method for posting meetup data"""
         data = request.get_json()
-        if not data:
-            return {"message": "Please provide a json data"}, 400
-        if not all(key in data for key in ["venue", "title", "happening_on"]):
-            return {"message": "Some fields are missing"}, 400
+        validate.check_data(data)
+        validate.validate_meetup_data(data)
         print(data)
         venue = data["venue"]
         title = data["title"]
@@ -35,9 +35,8 @@ class MeetupResource(Resource):
     def get(self):
         """Method for fetching all Meetup records"""
         meetups = db.get_all_meetups()
-        # check if the dh is empty
         if len(meetups) == 0:
-            return {'message': 'There are no meetups created'}, 404
+            raise NotFound ("There are no meetups created")
         return {'All meetups orders': meetups}, 200
 
     
@@ -49,5 +48,5 @@ class MeetupSpecific(Resource):
         meetup = db.get_specific_meetup(meetup_Id)
         if meetup:
             return {'meetups details': meetup[0]}, 200
-        return {'message': "meetups details not found"}, 404
+        raise NotFound ("meetups details not found")
 
