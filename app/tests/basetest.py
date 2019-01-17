@@ -165,7 +165,76 @@ class BaseTest(unittest.TestCase):
         "title": "Python Meetup",
         "happening_on": "1/25/2019"
     }
+        
+        self.question = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1
+    }
 
+        self.question1 = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": "ques11",
+        "body": "python"
+    }
+
+        self.new_user18 = {
+            "username": "zamzam",
+            "email": "zamzam@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+        self.question2 = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": "",
+        "body": "python"
+    }
+
+        self.new_user19 = {
+            "username": "Asma",
+            "email": "Asma@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+
+        self.question3 = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": 9999,
+        "body": "python"
+    }
+
+        self.question4 = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": "9999",
+        "body": "python"
+    }
+
+
+        self.question5 = {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": "Muuun",
+        "body": "python"
+    }
+
+        self.question6= {		
+ 		"userId": 1,
+ 		"meetup_Id": 1,
+        "title": "Heyyys",
+        "body": "python"
+    }
+
+
+    
+    
+     
         
 
 
