@@ -67,7 +67,7 @@ class Validators():
                 "Title and Venue should not be provided in numbers")
 
     def validate_question_data(self, data):
-        if not all(key in data for key in ["userId", "meetup_Id", "title", "body"]):
+        if not all(key in data for key in ["user_Id", "meetup_Id", "title", "body"]):
             raise BadRequest("Some fields are missing")
         elif isinstance(data["title"], int):
             raise BadRequest(
@@ -114,4 +114,3 @@ class Validators():
         elif data["response"] == "" or data["response"].isspace():
             raise BadRequest("response should not be empty")
     
-   
