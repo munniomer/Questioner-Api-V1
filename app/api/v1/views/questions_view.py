@@ -22,12 +22,8 @@ class QuestionResource(Resource):
         print(data)
         user_Id = data["user_Id"]
         meetup_Id = data["meetup_Id"]
-        title = data["title"]
-        body = data["body"]
-
-        if not validate.valid_question(title) or not validate.valid_question(body):
-            raise BadRequest(
-                "title and body cant be empty or less than 5 words")
+        title = str.strip(data["title"])
+        body = str.strip(data["body"])
 
         validate.check_user(user_Id)
         validate.check_meetup(meetup_Id)
@@ -47,7 +43,7 @@ class QuestionResource(Resource):
         return {
             "message": "question downvoted succesfully",
             "Question": question
-        },200
+        }, 200
 
 
 class UpvoteResource(Resource):
@@ -59,4 +55,4 @@ class UpvoteResource(Resource):
         return {
             "message": "question upvoted succesfully",
             "Question": question
-        },200
+        }, 200

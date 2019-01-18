@@ -142,24 +142,24 @@ class BaseTest(unittest.TestCase):
         self.meetup = {
             "venue": "iHub Kenya",
             "title": "Python Meetup",
-            "happening_on": "1/25/2019"
+            "happening_on": "2019-01-19"
         }
 
         self.meetup1 = {
             "venue": "iHub Kenya",
-            "happening_on": "1/25/2019"
+            "happening_on": "2019-01-19"
         }
 
         self.meetup2 = {
             "venue": "",
             "title": "Python Meetup",
-            "happening_on": "1/25/2019"
+            "happening_on": "2019-01-19"
         }
 
         self.meetup3 = {
             "venue": "7888",
             "title": "Python Meetup",
-            "happening_on": "1/25/2019"
+            "happening_on": "2019-01-19"
         }
 
         self.question = {

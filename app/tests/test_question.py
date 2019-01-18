@@ -37,7 +37,7 @@ class TestUSeQuestion(BaseTest):
         respon = self.client.post(
             "/api/v1/questions", json=self.question2, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('title and body cant be empty or less than 5 words',
+        self.assertIn('title or body should not be empty',
                       str(respon.data))
 
     def test_data_type_question(self):
