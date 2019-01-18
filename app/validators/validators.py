@@ -1,5 +1,6 @@
 """Validators Module"""
 import re
+import datetime
 from werkzeug.exceptions import BadRequest, NotFound
 from app.api.v1.models.users_model import users
 from app.api.v1.models.meetups_model import MeetupModel, meetups
@@ -60,11 +61,11 @@ class Validators():
         """Method for validating meetup data"""
         if not all(key in data for key in ["venue", "title", "happening_on"]):
             raise BadRequest("Some fields are missing")
-        elif data["venue"] == "" or data["title"] == "" or data["happening_on"] == "":
-            raise BadRequest("Please fill all the fields")
         elif data["venue"].isdigit() or data["title"].isdigit():
             raise BadRequest(
                 "Title and Venue should not be provided in numbers")
+        elif data["venue"] == "" or  data["title"] == "" or  data["happening_on"] == "" or  data["title"].isspace() or data["venue"].isspace() or data["happening_on"].isspace():
+            raise BadRequest("please fill all the fields")
 
     def validate_question_data(self, data):
         if not all(key in data for key in ["user_Id", "meetup_Id", "title", "body"]):
@@ -74,6 +75,8 @@ class Validators():
                 "title and body should not be provided in numbers")
         elif data["title"].isdigit() or data["body"].isdigit():
             raise BadRequest("title and body cant contain only numbers")
+        elif data["title"] == "" or  data["body"] == "" or data["title"].isspace() or data["body"].isspace():
+            raise BadRequest("title or body should not be empty")
 
     def check_user(self, userId):
         """Method for checking if user exist"""
@@ -114,3 +117,11 @@ class Validators():
         elif data["response"] == "" or data["response"].isspace():
             raise BadRequest("response should not be empty")
     
+    def valid_date(self, happeningdate):
+        """Method for validating date"""
+        createdOn = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        if happeningdate < createdOn:
+            raise BadRequest ("Meetup cant happen in the past")
+       
+
+
