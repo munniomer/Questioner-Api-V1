@@ -36,8 +36,21 @@ class QuestionsModel(object):
                 userid = ques["user_Id"]
                 if userid:
                     if vote > 0:
-                        raise BadRequest("you can't vote again")
+                        raise BadRequest("you can't upvote again")
                 ques["votes"] += 1
+            return question
+    
+    def downvote_question(self,question_Id):
+        """ Method for downvoting a question """
+        question = [question for question in questions if question['question_Id'] == question_Id]
+        if question:
+            for ques in question:
+                vote = ques["votes"]
+                userid = ques["user_Id"]
+                if userid:
+                    if vote < 0:
+                        raise BadRequest("you can't downvote again")
+                ques["votes"] -= 1
             return question
 
 
