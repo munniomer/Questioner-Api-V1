@@ -80,6 +80,31 @@ class TestUSeQuestion(BaseTest):
         self.assertIn('There is a question title similar that exists',
                       str(respon.data))
 
+    def test_upvote_question(self):
+        """tests if question can be upvoted"""
+        self.client.post("/api/v1/user/register", json=self.new_user20, content_type='application/json')
+        self.client.post(
+            "/api/v1/meetups", json=self.meetup, content_type='application/json')
+        self.client.post(
+            "/api/v1/questions", json=self.question10, content_type='application/json')
+        respon = self.client.put('/api/v1/questions/3/upvote')
+        self.assertEqual(respon.status_code, 200)
+        self.assertIn('question upvoted succesfully',
+                      str(respon.data))
+      
+    def test_downvote_nonexist_question(self):
+        """tests if question does not exist can be voted"""
+        respon = self.client.put('/api/v1/questions/15/downvote')
+        self.assertEqual(respon.status_code, 400)
+        self.assertIn('Question does not exist',
+                      str(respon.data))
 
     
-    
+    def test_upvote_nonexist_question(self):
+        """tests if question does not exist can be voted"""
+        respon = self.client.put('/api/v1/questions/15/upvote')
+        self.assertEqual(respon.status_code, 400)
+        self.assertIn('Question does not exist',
+                      str(respon.data))
+
+  

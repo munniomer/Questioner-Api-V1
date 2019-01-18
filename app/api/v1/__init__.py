@@ -20,7 +20,8 @@ app.add_resource(MeetupResource, '/meetups', '/meetups/upcoming')
 app.add_resource(MeetupSpecific, '/meetups/<int:meetup_Id>')
 
 #Questions
-app.add_resource(QuestionResource, '/questions','/questions/<int:question_Id>/upvote')
+app.add_resource(QuestionResource, '/questions','/questions/<int:question_Id>/downvote')
+app.add_resource(UpvoteResource, '/questions/<int:question_Id>/upvote')
 
 # Rsvps
 app.add_resource(RsvpsResource, '/meetups/<int:meetup_Id>/rsvps')

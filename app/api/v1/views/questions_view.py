@@ -38,15 +38,25 @@ class QuestionResource(Resource):
         return {"status": 201,
                 "message": "Meetup successfully created",
                 "meetup data": data}, 201
+
+    def put(self, question_Id):
+        """Method for downvoting question vote """
+        question = db.downvote_question(question_Id)
+        if not question:
+            raise BadRequest("Question does not exist")
+        return {
+            "message": "question downvoted succesfully",
+            "Question": question
+        },200
+
+
 class UpvoteResource(Resource):
-    def put(self,question_Id):
+    def put(self, question_Id):
         """Method for updating question vote """
-        question = db.upvote_question(question_Id)    
+        question = db.upvote_question(question_Id)
         if not question:
             raise BadRequest("Question does not exist")
         return {
             "message": "question upvoted succesfully",
             "Question": question
-        }
-
-   
+        },200
