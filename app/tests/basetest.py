@@ -167,12 +167,12 @@ class BaseTest(unittest.TestCase):
     }
         
         self.question = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1
     }
 
         self.question1 = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": "ques11",
         "body": "python"
@@ -187,7 +187,7 @@ class BaseTest(unittest.TestCase):
         }
 
         self.question2 = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": "",
         "body": "python"
@@ -203,14 +203,14 @@ class BaseTest(unittest.TestCase):
 
 
         self.question3 = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": 9999,
         "body": "python"
     }
 
         self.question4 = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": "9999",
         "body": "python"
@@ -218,14 +218,14 @@ class BaseTest(unittest.TestCase):
 
 
         self.question5 = {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": "Muuun",
         "body": "python"
     }
 
         self.question6= {		
- 		"userId": 1,
+ 		"user_Id": 1,
  		"meetup_Id": 1,
         "title": "Heyyys",
         "body": "python"
