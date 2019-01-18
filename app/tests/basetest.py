@@ -75,19 +75,18 @@ class BaseTest(unittest.TestCase):
 
         }
 
-
         self.new_user9 = {
-            
+
             "email": "shidaneail.com",
             "password": "m12m12"
-            
-           
+
+
         }
 
         self.new_user10 = {
             "email": "shidane1@gmail.com"
-            
-           
+
+
         }
 
         self.new_user11 = {
@@ -98,7 +97,6 @@ class BaseTest(unittest.TestCase):
 
         }
 
-
         self.new_user12 = {
             "username": "Mum",
             "email": "Mumm@gmail.com",
@@ -107,12 +105,11 @@ class BaseTest(unittest.TestCase):
 
         }
 
-
         self.new_user13 = {
-            
+
             "email": "Mumm@gmail.com",
             "password": "m12m12"
-            
+
 
         }
 
@@ -143,40 +140,39 @@ class BaseTest(unittest.TestCase):
         }
 
         self.meetup = {
-        "venue": "iHub Kenya",
-        "title": "Python Meetup",
-        "happening_on": "1/25/2019"
-    }
+            "venue": "iHub Kenya",
+            "title": "Python Meetup",
+            "happening_on": "1/25/2019"
+        }
 
         self.meetup1 = {
-        "venue": "iHub Kenya",
-        "happening_on": "1/25/2019"
-    }
-    
-        self.meetup2 = {
-        "venue": "",
-        "title": "Python Meetup",
-        "happening_on": "1/25/2019"
-    }
+            "venue": "iHub Kenya",
+            "happening_on": "1/25/2019"
+        }
 
+        self.meetup2 = {
+            "venue": "",
+            "title": "Python Meetup",
+            "happening_on": "1/25/2019"
+        }
 
         self.meetup3 = {
-        "venue": "7888",
-        "title": "Python Meetup",
-        "happening_on": "1/25/2019"
-    }
-        
-        self.question = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1
-    }
+            "venue": "7888",
+            "title": "Python Meetup",
+            "happening_on": "1/25/2019"
+        }
 
-        self.question1 = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": "ques11",
-        "body": "python"
-    }
+        self.question = {
+            "user_Id": 1,
+            "meetup_Id": 1
+        }
+
+        self.question1 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "ques11",
+            "body": "python"
+        }
 
         self.new_user18 = {
             "username": "zamzam",
@@ -186,12 +182,12 @@ class BaseTest(unittest.TestCase):
             "role": "user"
         }
 
-        self.question2 = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": "",
-        "body": "python"
-    }
+        self.question2 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "",
+            "body": "python"
+        }
 
         self.new_user19 = {
             "username": "Asma",
@@ -201,43 +197,41 @@ class BaseTest(unittest.TestCase):
             "role": "user"
         }
 
+        self.question3 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": 9999,
+            "body": "python"
+        }
 
-        self.question3 = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": 9999,
-        "body": "python"
-    }
+        self.question4 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "9999",
+            "body": "python"
+        }
 
-        self.question4 = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": "9999",
-        "body": "python"
-    }
+        self.question5 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "Muuun",
+            "body": "python"
+        }
 
-
-        self.question5 = {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": "Muuun",
-        "body": "python"
-    }
-
-        self.question6= {		
- 		"user_Id": 1,
- 		"meetup_Id": 1,
-        "title": "Heyyys",
-        "body": "python"
-    }
-        self.rsvp = {		
- 		"user_Id":  1
-    }
+        self.question6 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "Heyyys",
+            "body": "python"
+        }
+        self.rsvp = {
+            "user_Id":  1
+        }
 
         self.rsvp1 = {
-        "user_Id": 1,
-        "response": "  YES  "
-      }
+            "user_Id": 1,
+            "response": "  YES  "
+        }
         self.new_user19 = {
             "username": "maria",
             "email": "maria@gmail.com",
@@ -247,31 +241,61 @@ class BaseTest(unittest.TestCase):
         }
 
         self.rsvp2 = {
-        "user_Id": 6,
-        "response": "  YES  "
-      }
+            "user_Id": 6,
+            "response": "  YES  "
+        }
 
         self.rsvp3 = {
-        "user_Id": 1,
-        "response": "  YES  "
-      }
+            "user_Id": 1,
+            "response": "  YES  "
+        }
 
         self.rsvp4 = {
-        "user_Id": 1,
-        "response": "882"
-      }
+            "user_Id": 1,
+            "response": "882"
+        }
 
         self.rsvp5 = {
-        "user_Id": 1,
-        "response": " "
-      }
-    
-    
-    
-    
-     
-        
+            "user_Id": 1,
+            "response": " "
+        }
 
+        self.question10 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "english",
+            "body": "python"
+        }
+
+        self.new_user20 = {
+            "username": "Asmaa",
+            "email": "asmaa@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+        self.question11 = {
+            "user_Id": 1,
+            "meetup_Id": 1,
+            "title": "Javascript",
+            "body": "python"
+        }
+
+        self.new_user21 = {
+            "username": "Abdalla",
+            "email": "Abdalla@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
+
+        self.question14 = {
+            "user_Id": 1,
+            "meetup_Id": 2,
+            "title": "ques11",
+            "body": "python"
+        }
 
     def tearDown(self):
         """Destroys the test client when done"""
