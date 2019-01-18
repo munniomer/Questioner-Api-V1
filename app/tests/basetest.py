@@ -230,8 +230,43 @@ class BaseTest(unittest.TestCase):
         "title": "Heyyys",
         "body": "python"
     }
+        self.rsvp = {		
+ 		"user_Id":  1
+    }
 
+        self.rsvp1 = {
+        "user_Id": 1,
+        "response": "  YES  "
+      }
+        self.new_user19 = {
+            "username": "maria",
+            "email": "maria@gmail.com",
+            "password": "m12m12",
+            "confirm_password": "m12m12",
+            "role": "user"
+        }
 
+        self.rsvp2 = {
+        "user_Id": 6,
+        "response": "  YES  "
+      }
+
+        self.rsvp3 = {
+        "user_Id": 1,
+        "response": "  YES  "
+      }
+
+        self.rsvp4 = {
+        "user_Id": 1,
+        "response": "882"
+      }
+
+        self.rsvp5 = {
+        "user_Id": 1,
+        "response": " "
+      }
+    
+    
     
     
      

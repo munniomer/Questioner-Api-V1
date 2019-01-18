@@ -4,6 +4,7 @@ from werkzeug.exceptions import BadRequest, NotFound
 from app.api.v1.models.users_model import users
 from app.api.v1.models.meetups_model import MeetupModel, meetups
 from app.api.v1.models.questions_model import questions
+from app.api.v1.models.rsvps_model import rsvps
 
 
 db = MeetupModel()
@@ -64,6 +65,7 @@ class Validators():
         elif data["venue"].isdigit() or data["title"].isdigit():
             raise BadRequest(
                 "Title and Venue should not be provided in numbers")
+
     def validate_question_data(self, data):
         if not all(key in data for key in ["userId", "meetup_Id", "title", "body"]):
             raise BadRequest("Some fields are missing")
@@ -84,18 +86,32 @@ class Validators():
         meetup = db.get_specific_meetup(meetup_Id)
         if not meetup:
             raise NotFound('That meetup doesnt exist.')
-    
+
     def check_question(self, title):
         """Method for checking if meetup exists"""
-        question = [question for question in questions if question['title'] == title]
+        question = [
+            question for question in questions if question['title'] == title]
         if question:
             raise BadRequest("There is a question title similar that exists")
-    
-     
+
     def valid_question(self, question):
         """validate question"""
         regex = "^[a-zA-Z0-9]{5,}$"
         return re.match(regex, question)
 
+    def check_rsvps(self, user_Id):
+        """Method for checking if user already responded"""
+        user = [user for user in rsvps if user['user_Id'] == user_Id]
+        if user:
+            return user
 
+    def validate_rsvps(self, data):
+        if not all(key in data for key in ["user_Id", "response"]):
+            raise BadRequest("Some fields are missing")
+        elif isinstance(str.strip(data["response"]), int) or str.strip(data["response"]).isdigit():
+            raise BadRequest(
+                "response should not be provided in numbers")
+        elif data["response"] == "" or data["response"].isspace():
+            raise BadRequest("response should not be empty")
+    
    
