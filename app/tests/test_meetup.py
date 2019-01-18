@@ -48,7 +48,7 @@ class TestMeetup(BaseTest):
         respon = self.client.post(
             "/api/v1/meetups", json=self.meetup2, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
-        self.assertIn('Please fill all the fields',
+        self.assertIn('please fill all the fields',
                       str(respon.data))
 
     def test_incorrect_data(self):
